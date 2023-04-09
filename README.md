@@ -2,10 +2,10 @@
 
 ###### New user
 
-As a new user, you can run all the server by doing following the steps below
+As a new user, you can run everything (installing packages and run servers) by doing following the steps below:
 ```
-// requires: 'concurrently' to run. Either install dev-dependencies or globally
-npm run install
+// requires: 'concurrently' to run.
+npm run install // Or run `npm install concurrently` or npm install -g concurrently`
 npm run new-user
 ```
 
