@@ -1,5 +1,5 @@
 package-lock.json
-node_modules/*
+node_modules/
 
 /desktop_mqtt_receiver/node_modules/
 /desktop_mqtt_receiver/package-lock.json

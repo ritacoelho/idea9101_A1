@@ -46,6 +46,7 @@ let isPouting = false;
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
+  /** Audio input code from IDEA 9101 Lab 2023 Week 5 Example 4 Amplitude **/
   //create & start an audio input
   mic = new p5.AudioIn();
   mic.start();
@@ -64,7 +65,7 @@ function setup() {
   };
   video = createCapture(constraints);
 
-  // Only need landmarks for this example
+  // ML5 Face API example adapted from https://editor.p5js.org/ima_ml/sketches/fCsz7tb6w
   const faceOptions = { withLandmarks: true, withExpressions: false, withDescriptors: false };
   faceapi = ml5.faceApi(video, faceOptions, faceReady);
   video.hide();
@@ -95,34 +96,30 @@ function gotFaces(error, result) {
 }
 
 function draw() {
-  //get the level of amplitude of the mic
+  //Get the level of amplitude of the mic
   let level = amp.getLevel();
 
   background(255);
 
   push();
+  //Center and scale video playback to suit mobile screen
   let ratio = windowHeight/video.height;
   translate((windowWidth/2)+(video.width*ratio/2), 0);
-  //then scale it by -1 in the x-axis
-  //to flip the image
-  //scale(-1/ratio, 1/ratio);
   scale(-ratio, ratio);
-  //draw video capture feed as image inside p5 canvas
-  //imageMode(CENTER);
   image(video, 0,0);
   
   noFill();
 
-  //console.log(detections);
-  // Just look at the first face and draw all the points
+  //Get points surrounding mouth
   if (detections.length > 0) {
     let points = detections[0].landmarks.getMouth();
     
+    //Calculate distance for mouth opening and width
     let mouthOpening = Math.abs(points[14]._y-points[18]._y);
     let mouthWidth = Math.abs(points[0]._x-points[6]._x);
     
+    //Determine if person is pouting based on the ratio between opening and width
     let poutRatio = mouthOpening/mouthWidth*100;
-    
     if(poutRatio >= 10 && poutRatio <= 40) {
       isPouting = true;
       sendMessage(level);
@@ -131,6 +128,7 @@ function draw() {
       sendEndMessage();
     }
     
+    //Draw mouth points in red if not pouting, green if pouting so user gets feedback on the correct way to interact
     for (let i = 0; i < points.length; i++) {
       if(isPouting){
         stroke(0,255,0);
@@ -145,7 +143,6 @@ function draw() {
     }
   }
   pop();
-
 
   push();
 
@@ -164,7 +161,7 @@ function draw() {
   ellipse(0, -150, 50, 50);
   ellipse(0, -150, 25, 25);
 
-  //Radial lines in blower piece
+  //Radial lines in blower piece adapted from https://editor.p5js.org/ebenjmuse/sketches/Sk2uaKN9-
   points = 24 					//number of points 
   pointAngle = 360/points; //angle between points
   radius = 25; 		//length of each line from centre to edge of circle
@@ -193,7 +190,7 @@ function draw() {
   This function sends a MQTT message to server
 ***********************************************************************/
 function sendMessage(level) {
-
+  //message sent with amplitude of voice imput when user is pouting, and currently selected color
   let msgStr = level.toString() + ";" + colorPicker.color().toString();
 
 	let postData = JSON.stringify({ id: 1, 'message': msgStr});
@@ -204,6 +201,7 @@ function sendMessage(level) {
 }
 
 function sendEndMessage() {
+  //message sent to let server know this instance of interaction has ended in order for it to create a bubble and prepare for a new one
 	let postData = JSON.stringify({ id: 1, 'message': 'end'});
 
 	xmlHttpRequest.open("POST", HOST + '/sendEndMessage', false);

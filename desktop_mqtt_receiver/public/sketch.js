@@ -28,16 +28,6 @@ var socket;
 ////////////////////////////////////////////////////
 // CUSTOMIZABLE SECTION - BEGIN: ENTER OUR CODE HERE
 ////////////////////////////////////////////////////
-/*
- * things to do:
- * display and position bubble ✅
- * make bubble grow with amplitude ✅
- * make bubble mix with gradient colors
- * make bubble don't shrink when there is no amplitude ✅
- * make bubble fly around when there is no amplitude -> method move() ✅
- */
-
-// https://editor.p5js.org/rickyfelix19/sketches/YOHBazE-O
 
 let myBubbles = [];
 let h = 0;
@@ -64,11 +54,11 @@ function setup() {
 }
 
 function draw() {
-	//gradient background
+	//gradient background using lerp
 	for (let y = 0; y < height; y++) {
-		let commonShade = lerpColor(color(238,200,224), color(57,47,90), y / height);
+		let gradientLine = lerpColor(color(238,200,224), color(57,47,90), y / height);
 
-		stroke(commonShade);
+		stroke(gradientLine);
 		line(0, y, width, y);
 	}
 
@@ -83,6 +73,7 @@ function draw() {
 	if(myBubbles.length > 0) popBubble();
 }
 
+// Function that displays a new bubble forming based on user input audio
 function newBubble() {
 	//make sure h is within bounds to cap circle size at 200
 	h = amplitude > 0 ? map(amplitude, 0, 0.05, 50, 200, true) : 0;
@@ -91,7 +82,7 @@ function newBubble() {
 	ellipse(width/2, height-100, h);
 }
 
-//randomly pops bubbles who've lived longer than 30 seconds
+// Function that randomly pops bubbles who've lived longer than 30 seconds
 function popBubble() {
 	let randomIndex = Math.floor(random(0,myBubbles.length));
 	if(Date.now() - myBubbles[randomIndex].ts >= 30000 && Math.round(random())){
@@ -99,6 +90,8 @@ function popBubble() {
 	}
 }
 
+//This part of the sketch is inspired by the sketch by Joanne Martin on 27 February,2022 for IDEA9201 to demonstrate the use of the Circle class.
+//Which was originally based upon the exercise "Creating Classes" https://happycoding.io/tutorials/p5js/creating-classes and "Array of Objects" https://editor.p5js.org/p5/sketches/Objects:_Objects_Array.
 class Bubbles {
 	constructor(id, xPos, yPos, diameter, xSpeed, ySpeed, color, ts) {
 	  this.id = id;
@@ -151,6 +144,7 @@ function receiveMqtt(data) {
 	var topic = data[0];
 	var message = data[1];
 
+	//Receive message and synthesize data to depict whether a bubble is forming or has finished forming
 	if(topic.includes('healthy-bubbles-mqtt') && message === 'end') {
 		amplitude = 0;
 	} else if (topic.includes('healthy-bubbles-mqtt')) {
@@ -159,16 +153,17 @@ function receiveMqtt(data) {
 		colour = color(messageSplit[1].trim());
 	}
 
+	//Once amplitude decreases, create new bubble using last maximum amplitude - this creates an effect similar to blowing actual bubbles, where sometimes a lot of little bubbles will release from the blower sequentially
 	if(amplitude > 0.001 && amplitude < maxAmp*.8){
 		myBubbles.push(new Bubbles(
 			myBubbles.length,
 			width/2,
 			height-100,
-			h, //change
+			h,
 			random(-4, 4),
 			random(-4, 4),
 			colour,
-			Date.now()
+			Date.now() // ts to determine bubble age
 		  ));
 		maxAmp = 0;
 	} else {
