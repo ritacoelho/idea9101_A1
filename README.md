@@ -26,8 +26,11 @@ npm start
 
 open browser in `localhost:3000`
 
+---
 
-##### Terminal 2:
+### To run it manually or individually, you can open two terminal windows:
+
+##### Terminal 1:
 ```console
 cd phone_mqtt_sender
 npm install
