@@ -1,15 +1,4 @@
-// // Port for the Express web server
-// var PORT = 3300;
-
-
-
-// // Import Express and initialise the web server
-// var express = require('express');
-// var app = express();
-// var server = app.listen(PORT);
-// app.use(express.static('public'));
-
-// console.log('Node.js Express server running on port ' + PORT);
+/** Server code from IDEA 9101 Lab 2023 Week 4 Mqtt Sender Example **/
 
 // Port for the Express web server
 var PORT = 3300;

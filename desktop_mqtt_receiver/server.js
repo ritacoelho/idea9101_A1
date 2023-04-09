@@ -1,3 +1,5 @@
+/** Server code from IDEA 9101 Lab 2023 Week 4 Mqtt Receiver Example **/
+
 // Port for the Express web server
 var WEB_SERVER_PORT = 3000;
 //var OSC_PORT_IN = 12000;
@@ -69,7 +71,7 @@ process.on('SIGINT', () => {
   console.log('===> SIGINT signal received.');
   mqttClient.end();
   console.log('===> MQTT connection closed.');
-  tcpPort.close();
+  //tcpPort.close();
   console.log('===> OSC connection closed.');
   io.close();
   console.log('===> WebSocket connection closed.');
