@@ -25,6 +25,8 @@ npm start
 ```
 
 open browser in `localhost:3000`
+open browser in `localhost:3300`
+
 
 ---
 
