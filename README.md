@@ -19,9 +19,7 @@ npm run new-user
 
 ### To run it manually or individually, you can open two terminal windows:
 
-##### Terminal 1:
 ```console
-cd desktop_mqtt_receiver
 npm install
 npm start
 ```
