@@ -1,17 +1,13 @@
 {
-  "name": "idealab",
+  "name": "idea9101_a1",
   "version": "1.0.0",
-  "description": "Template for use in the IDEA Lab 2022, to allow a p5js sketch to send messages via OSC",
+  "description": "Client-server web app using p5.js and MQTT",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "mqtt-desktop": "cd desktop_mqtt_receiver && node server.js",
-    "mqtt-phone": "cd phone_mqtt_sender && node server.js",
-    "mqtt-all": "concurrently \"npm run mqtt-phone\" \"npm run mqtt-desktop\"",
-    "install-desktop": "cd desktop_mqtt_receiver && npm install",
-    "install-phone": "cd phone_mqtt_sender && npm install",
-    "install-all": "concurrently \"npm run install-desktop\" \"npm run install-phone\"",
-    "new-user": "concurrently \"npm run install-all\" \"npm run mqtt-all\""
+    "client": "cd phone_mqtt_sender && npm install && npm start",
+    "server": "cd desktop_mqtt_receiver && npm install && npm start",
+    "start": "concurrently \"npm run client\" \"npm run server\""
   },
   "keywords": [
     "p5js",
