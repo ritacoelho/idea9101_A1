@@ -22,7 +22,6 @@
     "socket.io": "^4.6.1"
   },
   "devDependencies": {
-    "concurrently": "^8.0.1",
-    "mqtt": "^4.3.7"
+    "concurrently": "^8.0.1"
   }
 }
