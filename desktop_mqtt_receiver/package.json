@@ -1,7 +1,7 @@
 {
-  "name": "idealabclientapp",
+  "name": "idea9101_a1_server",
   "version": "1.0.0",
-  "description": "Template for use in the IDEA Lab 2022, to allow a p5js sketch to send messages via OSC",
+  "description": "Template for use in the IDEA Lab 2022, to allow a p5js sketch to send messages via MQTT",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,9 +9,8 @@
   "keywords": [
     "p5js",
     "nodejs",
-    "osc"
+    "mqtt"
   ],
-  "author": "Luke Hespanhol",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3",
