@@ -1,21 +1,27 @@
 {
-    "name": "idea9101_a1",
-    "version": "1.0.0",
-    "description": "Client-server web app using p5.js and MQTT",
-    "main": "server.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "client": "cd phone_mqtt_sender && npm install && npm start",
-        "server": "cd desktop_mqtt_receiver && npm install && npm start",
-        "start": "concurrently \"npm run client\" \"npm run server\""
-    },
-    "keywords": [
-        "p5js",
-        "nodejs",
-        "mqtt"
-    ],
-    "license": "ISC",
-    "dependencies": {
-        "concurrently": "^8.0.1"
-    }
+  "name": "idea9101_a1",
+  "version": "1.0.0",
+  "description": "Client-server web app using p5.js and MQTT",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd phone_mqtt_sender && npm install && npm start",
+    "server": "cd desktop_mqtt_receiver && npm install && npm start",
+    "start": "concurrently \"npm run client\" \"npm run server\""
+  },
+  "keywords": [
+    "p5js",
+    "nodejs",
+    "mqtt",
+    "concurrently"
+  ],
+  "author": "[Ricky Felix, Maria Rita, Flyn, Aunthika]",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
 }

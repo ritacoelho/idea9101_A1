@@ -81,6 +81,7 @@ h4
   align-items: center;
   margin: auto;
   display: block;
+  max-height: 560px;
 }
 
 .navbar
@@ -183,7 +184,7 @@ h4
 .footer
 {
   /* float: bottom; */
-  position: fixed;
+  /* position: fixed; */
   left: 0;
   bottom: 0;
   width: 100%;

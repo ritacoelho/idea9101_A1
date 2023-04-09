@@ -11,7 +11,8 @@
     "nodejs",
     "mqtt"
   ],
-  "license": "ISC",
+  "author": "[Ricky Felix, Maria Rita, Flyn, Aunthika]",
+  "license": "UNLICENSED",
   "dependencies": {
     "express": "^4.17.3",
     "mqtt": "^4.3.6",
