@@ -1,5 +1,5 @@
 {
-  "name": "idealabclientapp",
+  "name": "idealabserverapp",
   "version": "1.0.0",
   "description": "Template for use in the IDEA Lab 2022, to allow a p5js sketch to send messages via OSC",
   "main": "server.js",
@@ -11,8 +11,8 @@
     "nodejs",
     "osc"
   ],
-  "author": "Luke Hespanhol",
-  "license": "ISC",
+  "author": "[Ricky Felix, Maria Rita, Flyn, Aunthika]",
+  "license": "UNLICENSED",
   "dependencies": {
     "express": "^4.17.3",
     "mqtt": "^4.3.6",

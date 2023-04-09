@@ -11,8 +11,8 @@
     "nodejs",
     "osc"
   ],
-  "author": "Luke Hespanhol",
-  "license": "ISC",
+  "author": "[Ricky Felix, Maria Rita, Flyn, Aunthika]",
+  "license": "UNLICENSED",
   "dependencies": {
     "express": "^4.18.2",
     "socket.io": "^4.6.1"
