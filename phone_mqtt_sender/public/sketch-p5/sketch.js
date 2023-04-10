@@ -179,6 +179,15 @@ function draw() {
   rectMode(CENTER);
   rect(0, -50, 10, 150);
   pop();
+
+  push();
+  textSize(12);
+  textStyle('bold');
+  stroke(255,255,255);
+  strokeWeight(2);
+  fill(0,0,0);
+  text('Bubble Color', width-(height/10), height-(height/10)-15);
+  pop();
 }
 
 ////////////////////////////////////////////////////
