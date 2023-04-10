@@ -29,12 +29,18 @@
     
     <main>
       <!-- Title -->
-      <div class="container-top">
-        <div class='card-top'>
-          <img src='./images/people-glad.svg' alt='Picture looking happy' longdesc='https://storyset.com/communication'/>
-          <h4 style="color: #333333; font-size:10px;">THANK YOU FOR PLAYING</h4>
-          <h1>We hope to see you again</h1>
-          <button class='button button-primary button-primary.color' type="submit" onclick="websiteLink()">Share Healthy Bubbles!</button>
+      <div class="container">
+        <div class='card-details'>
+          <div class='card-top'>
+            <img class='image' src='./images/people-glad.svg' alt='Picture looking happy' longdesc='https://storyset.com/communication'/>
+            <strong>
+              <h1 class='card-title' style="color: #333333; text-align:center;">THANK YOU FOR PLAYING</h1>
+            </strong>
+            <p class='card-paragraph' style="color: #333333; text-align:center;">We hope to see you again</p>
+            <button class='button button-primary button-primary.color' type="submit" onclick="copyClient()">Copy Client Link</button>
+            <br><br>
+            <button class='button button-primary button-primary.color' type="submit" onclick="copyServer()">Copy Server Link</button>
+          </div>
         </div>
       </div>
     </main>
@@ -48,8 +54,14 @@
 
       
       <script>
-        function websiteLink() {
-          navigator.clipboard.writeText("localhost:4000")
+        function copyClient() {
+          navigator.clipboard.writeText("localhost:3300")
+          console.log("You have successfully copied CLIENT link to your clipboard")
+        }
+
+        function copyServer() {
+          navigator.clipboard.writeText("localhost:3000")
+          console.log("You have successfully copied SERVER link to your clipboard")
         }
       </script>
       <!-- <script src="success.js" async defer></script> -->
